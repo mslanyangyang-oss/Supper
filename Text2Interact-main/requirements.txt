@@ -1,0 +1,33 @@
+--extra-index-url https://download.pytorch.org/whl/cu117
+
+# Core tensor / numerics
+torch==1.13.1+cu117
+torchvision==0.14.1+cu117          # pulled in by CLIP (clip/clip.py uses torchvision.transforms)
+numpy==1.23.5
+scipy==1.4.1                       # scipy.ndimage gaussian filtering
+
+# Inference framework (`import lightning as L`)
+lightning==1.9.1
+lightning-cloud==0.5.70            # pin: newer releases break `import lightning` on 1.9.1
+
+# Diffusion schedulers: DDPMScheduler / DDIMScheduler
+diffusers==0.32.2
+einops==0.8.1
+
+# Text encoder
+clip @ git+https://github.com/openai/CLIP.git@dcba3cb2e2827b402d2701e7e1c7d9fed8a20ef1
+
+# SMPL-X: imported at module load in models/gaussian_diffusion.py
+smplx==0.1.28
+
+# Config & IO
+PyYAML==6.0.2                      # `import yaml`
+python-box==7.2.0                  # `from box import Box`
+yacs==0.1.8                        # config system in configs/__init__.py
+
+# Plotting / mp4 rendering
+matplotlib==3.2.0
+Pillow==7.2.0
+
+# Progress bar (lazy import on the diffusion sampling path)
+tqdm==4.65.2
